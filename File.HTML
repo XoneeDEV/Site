@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>com.lol</title>
+    <base href="https://byvel.xo.je/" />
+    <link rel="canonical" href="https://byvel.xo.je/" />
+
+    <meta name="description" content="Home" />
+    <meta name="keywords" content="Home" />
+
+    <!-- Facebook Open Graph -->
+    <meta property="og:title" content="Home" />
+    <meta property="og:description" content="Home" />
+    <meta property="og:image" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://byvel.xo.je/?i=1/" />
+    <!-- Facebook Open Graph end -->
+
+    <link href="css/common-bundle.css?ts=20250905181302" rel="stylesheet" type="text/css" />
+    <link href="css/a188dda851df00d03fbe9110eacd609d-bundle.css?ts=20250905181302" rel="stylesheet" type="text/css" id="wb-page-stylesheet" />
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: black;
+            overflow: hidden;
+            color: white;
+        }
+        .snowflake { position: absolute; top: -10px; background: white; border-radius: 50%; width: 5px; height: 5px; opacity: 0.8; pointer-events: none; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(100vh); } }
+        .profiles { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
+        .profile-card { width: 150px; text-align: center; cursor: pointer; transition: transform 0.2s; position: relative; }
+        .profile-card:hover { transform: scale(1.05); }
+        .profile-card img { width: 100px; height: 100px; border-radius: 50%; border: 2px solid white; }
+        .popup { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); background: #222; border: 2px solid white; padding: 20px; border-radius: 10px; width: 300px; transition: transform 0.3s; z-index: 100; }
+        .popup.active { transform: translate(-50%, -50%) scale(1); }
+        .popup h2 { margin-top: 0; text-align: center; }
+        .close-btn { position: absolute; top: 10px; right: 15px; cursor: pointer; font-weight: bold; }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <script src="js/common-bundle.js?ts=20250905181302" type="text/javascript"></script>
+    <script src="js/a188dda851df00d03fbe9110eacd609d-bundle.js?ts=20250905181302" type="text/javascript"></script>
+
+    <script>
+        window.useTrailingSlashes = true;
+        window.disableRightClick = false;
+        window.currLang = 'en';
+    </script>
+</head>
+
+<body class="site site-lang-en">
+
+
+    <!-- Profiles -->
+    <div class="profiles">
+        <div class="profile-card" data-name="Xone" data-info="Owns Site add my disc to be added must be trusted @Xoneee.">
+            <img src="https://cdn.discordapp.com/avatars/712394727428980788/09107c54b26afb89c9c4338ad94f4f8e.webp?size=1024" alt="Xone">
+            <p>Xone</p>
+        </div>
+        <div class="profile-card" data-name="Tlocc" data-info="Harmless And Not Com U Fags.">
+            <img src="https://cdn.discordapp.com/avatars/1270316003263516749/19b756f73e9f1b74a3cebbd860c4b249.webp?size=1024" alt="Tlocc">
+            <p>Tlocc</p>
+        </div>
+        <div class="profile-card" data-name="Vel" data-info="Dev For 0 Years prob A Skid.">
+            <img src="https://cdn.discordapp.com/avatars/1205489879195193356/b0ce9169b28c667d359009c5661edc71.webp?size=1024" alt="xoneee">
+            <p>Vel</p>
+        </div>
+        <div class="profile-card" data-name="balencigia" data-info="bal is Top1 Dehoodian.">
+            <img src="https://cdn.discordapp.com/avatars/1348796404658602167/5d4519752e34973a72e285afc760d5e5.webp?size=1024" alt="balencigia">
+            <p>balencigia</p>
+        </div>
+        <div class="profile-card" data-name="cutsonmyarms." data-info="Femboy Harmless Not Com.">
+            <img src="https://cdn.discordapp.com/avatars/1378112643197571112/7c29e10328a0e44998df826b3b7d0b8e.webp?size=1024" alt="cutsonmyarms.">
+            <p>cutsonmyarms.</p>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <span class="close-btn" onclick="closePopup()">×</span>
+        <h2 id="popup-name"></h2>
+        <p id="popup-info"></p>
+    </div>
+
+    <script>
+        // Snow animation
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            const size = Math.random() * 5 + 2;
+            snowflake.style.width = size + 'px';
+            snowflake.style.height = size + 'px';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = Math.random() * 5 + 5 + 's';
+            snowflake.style.opacity = Math.random() * 0.8 + 0.2;
+            document.body.appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), 10000);
+        }
+        setInterval(createSnowflake, 100);
+
+        // Popup logic
+        const profiles = document.querySelectorAll('.profile-card');
+        const popup = document.getElementById('popup');
+        const popupName = document.getElementById('popup-name');
+        const popupInfo = document.getElementById('popup-info');
+
+        profiles.forEach(profile => {
+            profile.addEventListener('click', () => {
+                popupName.textContent = profile.dataset.name;
+                popupInfo.textContent = profile.dataset.info;
+                popup.classList.add('active');
+            });
+        });
+        function closePopup() { popup.classList.remove('active'); }
+    </script>
+</body>
+</html>
+
+"""
